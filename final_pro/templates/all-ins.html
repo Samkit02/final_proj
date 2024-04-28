@@ -1,0 +1,23 @@
+{%extends "layout.html"%}
+{%block content%}
+<table class="table table-striped">
+  <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Company</th>
+        <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for ins1 in ins%}
+    <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{ins1.name}}</td>
+        <td>{{ins1.company}}</td>
+        <td style="width:40%">{{ins1.description[0:30]}}..</td>
+    </tr>
+  {%endfor%}
+  </tbody>
+</table>
+{%endblock content%}

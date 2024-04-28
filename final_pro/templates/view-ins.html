@@ -1,0 +1,81 @@
+{%extends "layout.html"%}
+{%block content%}
+
+<article class="media content-section">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" style="position:absolute;" href="#">{{ insu.company }}</a>
+      {% if current_user.zip_code == '60612' %}
+      <h4 class="text-right text-bold">${{ insu.rate|int - 40 }}/month</h4>
+      {%else%}
+      <h4 class="text-right text-bold">${{ insu.rate }}/month</h4>
+      {%endif%}
+    </div>
+    <h2><a class="article-title" href="#">{{ insu.name }}</a></h2>
+    <p class="article-content">{{ insu.description }}</p>
+  </div>
+</article>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Check Out
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Insert Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="p-4">
+        <form method="POST" action="">
+          {% if insu.type == 'health' %}
+          <div class="form-group">
+            <label>Gender</label>
+            <input type="text" class="form-control" placeholder="Enter Gender" name="agwe">
+          </div>
+          <div class="form-group">
+            <label>Addiction's</label>
+            <input type="text" class="form-control" placeholder="Enter Addiction" name="aqge">
+          </div>
+          <div class="form-group">
+            <label>Any Disease</label>
+            <input type="text" class="form-control" placeholder="Enter Disease" name="agfe">
+          </div>
+          <div class="form-group">
+            <label>Date Of Birth</label>
+            <input type="date" class="form-control" placeholder="Enter Date Of Birth" name="dob">
+          </div>
+          <div class="form-group">
+            <label>Any Disability</label>
+            <input type="text" class="form-control" placeholder="Enter Disability" name="age">
+          </div>
+          {%else%}
+          <div class="form-group">
+            <label>Vehicle Model</label>
+            <input type="text" class="form-control" placeholder="Enter Vehicle Model" name="vm">
+          </div>
+          <div class="form-group">
+            <label>Vehicle Name</label>
+            <input type="text" class="form-control" placeholder="Enter Vehicle Name" name="v1n">
+          </div>
+          <div class="form-group">
+            <label>Vehicle Mileage</label>
+            <input type="text" class="form-control" placeholder="Enter Vehicle Mileage" name="vmqi">
+          </div>
+          <div class="form-group">
+            <label>No of Accidents</label>
+            <input type="text" class="form-control" placeholder="Enter No of Accidents" name="vmsi">
+          </div>
+          {%endif%}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock content%}
